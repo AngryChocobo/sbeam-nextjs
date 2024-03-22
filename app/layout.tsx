@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 // import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { MainHeader } from "@/components/ui/main-header";
 import { MainFooter } from "@/components/ui/main-footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     // <ClerkProvider>
     <html lang="en">
-      <body className={[inter.className, "flex flex-col"].join(" ")}>
+      <body className={["flex flex-col"].join(" ")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

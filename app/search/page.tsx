@@ -1,43 +1,54 @@
-export default function Home() {
-  return (
-    <main className="flex-1 bg-[url('/imgs/home-bg.png')]  ">
-      <section className="m-auto  flex max-w-screen-xl flex-col items-center justify-between py-8 ">
-        <div className="mx-auto max-w-2xl px-4   lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-50">
-            Top Seller
-          </h2>
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
-          <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-4">
+export default function Saerch() {
+  return (
+    <main className="flex-1 bg-[#1b2838]  ">
+      <section className="m-auto  flex max-w-screen-md flex-col items-center  justify-between py-8 ">
+        <div className="mx-auto w-full max-w-2xl   px-4 lg:max-w-7xl lg:px-8">
+          <div className="flex w-full max-w-sm items-center space-x-2">
+            <Input className="bg-[#223a4c]" placeholder="keyword" />
+            <Button className="bg-[#223a4c] " type="submit">
+              Search
+            </Button>
+          </div>
+
+          <div className="mt-6 w-full">
             {games.map((product) => (
-              <div key={product.sid} className="group relative">
-                <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden  bg-gray-200 shadow-xl group-hover:opacity-75">
+              <div
+                key={product.sid}
+                className="group relative mb-3 flex w-full bg-[#16202d] hover:bg-[#101822]"
+              >
+                <div className="aspect-h-1 aspect-w-1 lg:aspect-none w-[120px] overflow-hidden  bg-gray-200 shadow-xl">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                    className="h-full w-full object-cover  object-center lg:h-full lg:w-full"
                   />
                 </div>
-                <div className=" flex justify-between">
-                  <div className="hidden">
-                    <h3 className="text-xl text-gray-700">
-                      <a
-                        href={product.store_url}
-                        className="font-semibold dark:text-white"
-                      >
+                <div className="flex flex-1 items-center justify-between">
+                  <div className="ml-2 w-1/2">
+                    <h3 className="mb-1 text-nowrap text-gray-700">
+                      <a className="font-semibold dark:text-white">
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
                       </a>
                     </h3>
+                    <GitHubLogoIcon />
                   </div>
-                  <p className="bg-black pr-2 text-lg font-medium text-white">
-                    <span className="mr-4  inline-block h-full bg-[#4c6b22] px-2 font-bold text-black">
-                      -{product.discount ?? 50}%
-                    </span>
-                    <span className="mr-4 text-gray-400 line-through">
+                  <p> {product.published_store}</p>
+                  <span className="mr-4  inline-block  bg-[#4c6b22] px-1 font-bold text-[#BEEE11] ">
+                    -{product.discount ?? 50}%
+                  </span>
+                  <div className="flex flex-col pr-2 text-lg font-medium text-white">
+                    <span className=" text-gray-400 line-through">
                       ${product.full_price}
                     </span>
-                    <span>${product.current_price}</span>
-                  </p>
+                    <span className="text-[#BEEE11]">
+                      ${product.current_price}
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
